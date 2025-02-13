@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>春江水 - 生日祝福</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=ZCOOL+KuaiLe&display=swap');
+
+        /* 设置全屏适配 */
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ffe4e1, #d8bfd8, #b0e0e6);
+            background-size: 400% 400%;
+            animation: gradientBG 10s infinite alternate;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* 顶部诗句 */
+        .top-text {
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'SimHei', sans-serif;
+            color: white;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .top-text:nth-child(2) { top: 10%; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 主要内容 */
+        .container {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        /* 大蛋糕 */
+        .cake {
+            font-size: 200px;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.9;
+        }
+
+        /* 牛的动画 */
+        .emoji {
+            font-size: 100px;
+            position: relative;
+            animation: headShake 1.5s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes headShake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* 眨眼睛 */
+        .eye {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            top: 35%;
+            left: 30%;
+            animation: blink 3s infinite;
+        }
+
+        .eye.right {
+            left: 65%;
+        }
+
+        @keyframes blink {
+            0%, 95% { transform: scaleY(1); }
+            96%, 100% { transform: scaleY(0.1); }
+        }
+
+        /* 祝福语（固定在底部） */
+        .message {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffdd00;
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 气球动画 */
+        .balloon {
+            position: absolute;
+            font-size: 50px;
+            animation: floatBalloon 4s infinite alternate ease-in-out;
+        }
+
+        .balloon:nth-child(1) { left: 10%; animation-duration: 5s; }
+        .balloon:nth-child(2) { left: 80%; animation-duration: 6s; }
+        .balloon:nth-child(3) { left: 30%; animation-duration: 5.5s; }
+        .balloon:nth-child(4) { left: 70%; animation-duration: 4.8s; }
+
+        @keyframes floatBalloon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-30px); }
+        }
+
+        /* 彩带 */
+        .ribbon {
+            position: absolute;
+            font-size: 40px;
+            animation: spinRibbon 5s infinite linear;
+        }
+
+        .ribbon:nth-child(1) { left: 5%; animation-duration: 6s; }
+        .ribbon:nth-child(2) { left: 90%; animation-duration: 7s; }
+        .ribbon:nth-child(3) { left: 20%; animation-duration: 5.5s; }
+        .ribbon:nth-child(4) { left: 80%; animation-duration: 6.5s; }
+
+        @keyframes spinRibbon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 音乐自动播放 */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部诗句 -->
+    <div class="top-text">山歌好比春江水，</div>
+    <div class="top-text">牛牛到底姓名谁 🧐</div>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 大蛋糕背景 -->
+        <div class="cake">🎂</div>
+        
+        <!-- 牛 -->
+        <div class="emoji" id="cow">
+            🐮
+            <div class="eye"></div>
+            <div class="eye right"></div>
+        </div>
+    </div>
+
+    <!-- 祝福语 -->
+    <div class="message">🎉 生日快乐！牛牛哞哞！ 🎂</div>
+
+    <!-- 气球 & 彩带 -->
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+    <div class="ribbon">🎀</div>
+    <div class="ribbon">🎀</div>
+    <div class="ribbon">🎀</div>
+    <div class="ribbon">🎀</div>
+
+    <!-- 音乐 -->
+    <audio id="bg-music" autoplay loop>
+        <source src="你的生日歌链接.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var bgMusic = document.getElementById("bg-music");
+            bgMusic.play().catch(() => {
+                console.log("自动播放被阻止，用户需要交互");
+            });
+        });
+    </script>
+</body>
+</html>
