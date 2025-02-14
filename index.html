@@ -170,14 +170,31 @@
     <div class="bubble" style="left: 50%; animation-delay: 2s;"></div>
     <div class="bubble" style="left: 70%; animation-delay: 3s;"></div>
 
-    <!-- 背景音乐 -->
-    <button onclick="playMusic()">点击开始音乐</button>
-    <script>
-        function playMusic() {
-            document.getElementById('bg-music').play();
-            document.getElementById('moo-sound').play();
-        }
-    </script>
+    <!-- 移除autoplay，添加静音 -->
+<audio id="bg-music" loop muted>
+    <source src="https://..." type="audio/mpeg">
+</audio>
+<audio id="moo-sound" loop>
+    <source src="https://..." type="audio/mpeg">
+</audio>
+
+<script>
+// 微信环境适配
+document.addEventListener('WeixinJSBridgeReady', function() {
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.muted = false;
+    bgMusic.play();
+    document.getElementById('moo-sound').play();
+}, false);
+
+// 用户点击按钮触发
+document.querySelector('button').addEventListener('click', function() {
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.muted = false;
+    bgMusic.play();
+    document.getElementById('moo-sound').play();
+});
+</script>
 
     <!-- 背景音乐 -->
     <audio id="bg-music" autoplay loop>
