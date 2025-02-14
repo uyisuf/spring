@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -94,6 +93,51 @@
             font-size: 60px;
         }
 
+        /* 流星效果 */
+        @keyframes meteor {
+            0% { top: -10%; left: 100%; }
+            100% { top: 100%; left: -10%; }
+        }
+
+        .meteor {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: meteor 3s linear infinite;
+        }
+
+        /* 气球效果 */
+        @keyframes balloonFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            animation: balloonFloat 10s infinite ease-in;
+        }
+
+        /* 气泡泡沫效果 */
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: bubbleFloat 6s infinite ease-in;
+        }
+
     </style>
 </head>
 <body>
@@ -111,6 +155,30 @@
 
     <div class="message">🎵 生日快乐！ 牛牛哞哞 🎶</div>
 
+    <!-- 流星特效 -->
+    <div class="meteor" style="animation-delay: 0s;"></div>
+    <div class="meteor" style="animation-delay: 1s;"></div>
+    <div class="meteor" style="animation-delay: 2s;"></div>
+
+    <!-- 气球特效 -->
+    <div class="balloon" style="left: 20%;"></div>
+    <div class="balloon" style="left: 40%;"></div>
+    <div class="balloon" style="left: 60%;"></div>
+
+    <!-- 气泡泡沫特效 -->
+    <div class="bubble" style="left: 30%; animation-delay: 1s;"></div>
+    <div class="bubble" style="left: 50%; animation-delay: 2s;"></div>
+    <div class="bubble" style="left: 70%; animation-delay: 3s;"></div>
+
+    <!-- 背景音乐 -->
+    <button onclick="playMusic()">点击开始音乐</button>
+    <script>
+        function playMusic() {
+            document.getElementById('bg-music').play();
+            document.getElementById('moo-sound').play();
+        }
+    </script>
+
     <!-- 背景音乐 -->
     <audio id="bg-music" autoplay loop>
         <source src="https://raw.githubusercontent.com/uyisuf/spring/main/轻松愉快的氛围曲-开心活泼-祝你生日快乐（古典版）_爱给网_aigei_com.mp3" type="audio/mpeg">
@@ -120,13 +188,5 @@
     <audio id="moo-sound" autoplay loop>
         <source src="https://raw.githubusercontent.com/uyisuf/spring/main/牛哞哞叫的声音_爱给网_aigei_com.mp3" type="audio/mpeg">
     </audio>
-
-    <script>
-        // 让音乐适配微信自动播放
-        document.addEventListener('WeixinJSBridgeReady', function () {
-            document.getElementById('bg-music').play();
-            document.getElementById('moo-sound').play();
-        });
-    </script>
 </body>
 </html>
